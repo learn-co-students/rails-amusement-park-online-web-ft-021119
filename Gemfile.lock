@@ -230,7 +230,7 @@ DEPENDENCIES
   pry
   puma (~> 3.7)
   rack_session_access
-  rails (~> 5.1)
+  rails
   rspec-rails
   sass-rails (~> 5.0)
   selenium-webdriver
