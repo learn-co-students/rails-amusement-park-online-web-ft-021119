@@ -1,0 +1,7 @@
+<h1>Showing <%= @user.name %>'s Information</h1>
+
+<p>Mood : <%= mood(@user) %></p>
+<p>Tickets: <%= @user.tickets %></p>
+<p>Height: <%= @user.height %></p>
+
+<%= link_to "All Users", users_path %>
