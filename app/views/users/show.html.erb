@@ -1,0 +1,19 @@
+<h1>Showing <%= @user.name %>'s Information</h1>
+
+<% if !@user.admin %>
+<div>
+   <p>Mood : <%= @user.mood %></p>
+   <p>Tickets: <%= @user.tickets %></p>
+   <p>Height: <%= @user.height %></p>
+</div>
+<% else %>
+   <p>ADMIN</p>
+<% end %>
+
+<%= link_to "See attractions", attractions_path %>
+
+<% if logged_in? %>
+   <%= link_to "Log Out", signout_path, method: :post %>
+<% end %>
+
+<%= link_to "All Users", users_path %>

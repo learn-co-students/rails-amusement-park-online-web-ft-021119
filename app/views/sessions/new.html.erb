@@ -1,0 +1,13 @@
+<h1>Login Page</h1>
+
+<%= form_tag do %>
+   <%= label_tag :user_name %>
+   <%= select_tag :user_name, options_from_collection_for_select(User.all, :name, :name) %>
+   <br>
+
+   <%= label_tag :password %>
+   <%= password_field_tag :password %>
+   <br>
+
+   <%= submit_tag "Sign In" %>
+<% end %>
