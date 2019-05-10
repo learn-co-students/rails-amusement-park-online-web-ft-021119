@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_login, :current_user, only: [:show, :take_ride, :enough_tickets?, :tall_enough?]
 
 
   def index
@@ -14,30 +15,20 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to user_path(@user)
     else
-      render :new, alert: "Please try again."
+      redirect_to '/', alert: "Please try again."
     end
   end
 
   def show
-    if logged_in?
-      @user = User.find_by_id(params[:id])
-    else
-      redirect_to '/'
-    end
   end
+
+
+
 
   private
 
   def user_params
     params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
-  end
-
-  def logged_in?
-    !!session[:user_id]
-  end
-
-  def set_user
-    @user = User.find_by_id(params[:id])
   end
 
 

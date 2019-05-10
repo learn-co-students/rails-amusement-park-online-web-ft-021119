@@ -4,31 +4,31 @@ class Ride < ActiveRecord::Base
   validates :user_id, presence: true
   validates :attraction_id, presence: true
 
-  def take_ride
-    if enough_tickets? && tall_enough?
-      user.tickets = user.tickets - ride.tickets
-      user.nausea = user.nausea + ride.nausea
-      user.happiness = user.happiness + ride.happiness
-    else
-      # alert: "You may not take this ride"
-      redirect_to '/attractions/index'
+  def take_ride(user,attraction)
+    binding.pry
+    # ride = Attraction.find_by_id(params[:attraction_id])
+    if user && attraction
+      if enough_tickets?(user, attraction) && tall_enough?(user, attraction)
+        user.tickets = user.tickets - attraction.tickets
+        user.nausea = user.nausea + attraction.nausea_rating
+        user.happiness = user.happiness + attraction.happiness_rating
+        redirect_to user_path(user)
+      else
+        # alert: "You may not take this attraction"
+        redirect_to user_path(user)
+      end
     end
   end
 
 
-    private
+  def enough_tickets?(user, attraction)
+    user.tickets > attraction.tickets ? true : false
+  end
 
-    def enough_tickets?
-      if user && ride
-        user.tickets > ride.tickets ? true : false
-      end
-    end
+  def tall_enough?(user, attraction)
+    user.height > attraction.min_height ? true : false
+  end
 
-    def tall_enough?
-      if user && ride
-        user.height > ride.height ? true : false
-      end
-    end
 
 
 end
