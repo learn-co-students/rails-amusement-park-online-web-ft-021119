@@ -4,6 +4,8 @@ class AttractionsController < ApplicationController
 
    #Set @user for views by calling current_user from ApplicationController
    before_action :current_user, only: [:index, :show]
+
+   #Set @attraction by finding the Attraction with params[:id]
    before_action :current_attraction, only: [:show, :edit, :update, :destroy]
 
    def index
