@@ -5,11 +5,11 @@ class RidesController < ApplicationController
 
     @ride = Ride.new(user_id: @user.id, attraction_id: @attraction.id )
     if @ride.save
-      # flash[:notice] = ride_taken.take_ride
-      # redirect_to user_path(@user)
+      flash[:alert] = @ride.take_ride
+      redirect_to user_path(@user)
 
-      @message = @ride.take_ride
-      redirect_to user_path(@ride.user, :message => @message)
+      # @message = @ride.take_ride
+      # redirect_to user_path(@ride.user, :message => @message)
     else
       redirect_to attraction_path(@attraction)
     end
