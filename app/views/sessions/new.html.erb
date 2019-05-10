@@ -1,0 +1,8 @@
+Sign In !
+
+ <%= form_for @user, url: signin_path, method: :post do |f| %>
+  Select Name: <%= f.collection_select :name, @users, :name, :name %><br>
+  <%= f.label :password%>
+  <%= f.password_field :password, id: 'password'%><br>
+  <%= f.submit "Sign In" %>
+ <% end %>
