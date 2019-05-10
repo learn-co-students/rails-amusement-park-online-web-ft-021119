@@ -11,11 +11,19 @@
   <%= button_to "Edit Ride", attraction_path(@attraction) %><br>
   <%= button_to "Delete Ride", attraction_path(@attraction) %><br>
 <% else %>
+
+<!--
   <form action="/rides" method="post">
       
         <%= tag(:input, :type => "hidden", :name => :user_id, :value => current_user.id) %>
         <%= tag(:input, :type => "hidden", :name => :attraction_id, :value => @attraction.id) %>
         <input class="btn btn-light" type="submit" value="Go on this ride">
       </form>
+-->
+  <%= form_for @ride do |f|%>
+    <%= f.hidden_field :user_id, value: @user.id%>
+    <%= f.hidden_field :attraction_id, value: @attraction.id %>
+    <%= button_to "Go on this ride", controller: 'rides', action: 'create'%><br>
+  <% end %>
 
 <% end %>
