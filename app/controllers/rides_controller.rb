@@ -7,8 +7,10 @@ class RidesController < ApplicationController
   def create
     @user = current_user
     @attraction = Attraction.find_by_id(params[:attraction_id])
-    Ride.new
-    redirect_to user_path(@user)
+    @ride = Ride.new(@attraction, @user)
+    if @ride.valid?
+      redirect_to user_path(@user)
+    end
 
   end
 
