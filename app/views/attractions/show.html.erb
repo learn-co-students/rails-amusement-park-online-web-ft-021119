@@ -1,0 +1,7 @@
+<h1>All about <%= @attraction.name %></h1>
+
+<%= @attraction.each do |k,v| %>
+  <%= k.to_s %>: <%= v %>
+<% end %>
+
+<%= link_to "All Attractions", attractions_path %>
