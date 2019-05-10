@@ -14,12 +14,13 @@ class UsersController < ApplicationController
    end
 
    def show
-      @user = User.find_by_id(params[:id])
+      check_login
+      @user = User.find_by_id(params[:id])  
    end
 
 
    private
       def user_params
-         params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height)
+         params.require(:user).permit(:name, :password, :nausea, :happiness, :tickets, :height, :admin)
       end
 end
