@@ -4,4 +4,6 @@
   <%= k.to_s %>: <%= v %>
 <% end %>
 
+<%if @user.admin
+
 <%= link_to "All Attractions", attractions_path %>
