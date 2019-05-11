@@ -1,6 +1,11 @@
 class Ride < ActiveRecord::Base
   belongs_to :user
   belongs_to :attraction
+<<<<<<< HEAD
+=======
+  # validates :user_id, presence: true
+  # validates :attraction_id, presence: true
+>>>>>>> b6fd2991cf1a217baa57e7e2438810040d55345f
 
   def take_ride(user,attraction)
     binding.pry

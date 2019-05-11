@@ -12,4 +12,7 @@ class RidesController < ApplicationController
   end
 
 
+  def ride_params
+    params.require(:ride).permit(:attraction_id, :user_id)
+  end
 end
