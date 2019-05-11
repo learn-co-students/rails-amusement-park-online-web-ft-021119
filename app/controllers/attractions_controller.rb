@@ -9,6 +9,7 @@ class AttractionsController < ApplicationController
     @user = User.find_by_id(session[:user_id])
     @attraction = Attraction.find_by_id(params[:id])
     @ride = Ride.new
+
   end
 
 
