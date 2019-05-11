@@ -33,11 +33,6 @@ ActiveRecord::Schema.define(version: 2019_05_10_223055) do
     t.integer "tickets"
     t.integer "height"
     t.boolean "admin", default: false
-<<<<<<< HEAD
-=======
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
->>>>>>> b6fd2991cf1a217baa57e7e2438810040d55345f
   end
 
 end
