@@ -5,7 +5,7 @@ class Ride < ActiveRecord::Base
   def take_ride
     #binding.pry
     if too_short && not_enough_tickets
-      response = "Sorry. " + tickets_message + height_message
+      response = "Sorry. " + tickets_message + " " + height_message
     elsif
       not_enough_tickets
       response = "Sorry. " + tickets_message
