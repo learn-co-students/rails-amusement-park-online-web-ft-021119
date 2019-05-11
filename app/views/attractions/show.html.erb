@@ -1,18 +1,20 @@
 <h1>All about <%= @attraction.name %></h1>
 
-<label>Tickets:</label><%= @attraction.tickets %>
-<label>Nausea rating:</<label><%= @attraction.nausea_rating %>
-<label>Happiness rating:</label><%= @attraction.happiness_rating %>
-<label>Minimum height to ride:</label><%= @attraction.min_height %><br><br>
+<label>Tickets: </label> <%= @attraction.tickets %><br>
+<label>Nausea rating: </label> <%= @attraction.nausea_rating %><br>
+<label>Happiness rating: </label> <%= @attraction.happiness_rating %><br>
+<label>Minimum height to ride: </label> <%= @attraction.min_height %><br><br>
 
-<%= button_to "All Attractions", attractions_path, method:"get" %>
 
 <% if @user && @user.admin %>
   <%= button_to "Edit Ride", attraction_path(@attraction) %><br>
   <%= button_to "Delete Ride", attraction_path(@attraction) %><br>
 <% else %>
   <%= form_for @ride do |f|%>
+    <%= f.hidden_field :user_id, value: @user.id %>
     <%= f.hidden_field :attraction_id, value: @attraction.id %>
-    <%= button_to "Go on this ride", controller: 'rides', action: 'create', method: "post"%><br>
+    <%= f.submit "Go on this ride" %><br>
   <% end %>
 <% end %>
+
+<%= button_to "All Attractions", attractions_path, method:"get" %>

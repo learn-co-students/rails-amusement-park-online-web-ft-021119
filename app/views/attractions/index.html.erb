@@ -1,5 +1,6 @@
-<h1>Attractions</h1>
+<h1>Attractions</h1><br><br>
+
 
 <% Attraction.all.each do |a| %>
-  <%= link_to "Go on #{a.name}", attraction_path(a) %>
+  <%= link_to "Go on #{a.name}", attraction_path(a) %><br><br>
 <% end %>
