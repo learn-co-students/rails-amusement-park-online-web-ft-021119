@@ -6,14 +6,14 @@ class RidesController < ApplicationController
   end
 
   def create
-    ride = Ride.create(attraction_id: params[:ride][:attraction_id], user_id: params[:ride][:user_id])
+    @ride = Ride.create(attraction_id: params[:ride][:attraction_id], user_id: params[:ride][:user_id])
 
-    if ride
-      response = ride.take_ride
+    if @ride
+      response = @ride.take_ride
       flash[:notice] = response
-      redirect_to user_path(ride.user)
+      redirect_to user_path(@ride.user)
     else
-      redirect to attraction_path(ride.attraction)
+      redirect to attraction_path(@ride.attraction)
     end
   end
 

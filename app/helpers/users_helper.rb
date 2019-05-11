@@ -1,9 +1,10 @@
 module UsersHelper
 
-  def mood(user)
-    unless user.admin
-      if user.nausea && user.happiness
-        user.nausea > user.happiness ? "sad" : "happy"
+  def mood
+    unless self.admin
+      if self.nausea && self.happiness
+        #binding.pry
+        self.nausea > self.happiness ? "sad" : "happy"
       end
     end
   end
