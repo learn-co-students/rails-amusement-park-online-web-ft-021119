@@ -1,0 +1,20 @@
+<h1>All about <%= @attraction.name %></h1>
+
+<label>Tickets: </label> <%= @attraction.tickets %><br>
+<label>Nausea rating: </label> <%= @attraction.nausea_rating %><br>
+<label>Happiness rating: </label> <%= @attraction.happiness_rating %><br>
+<label>Minimum height to ride: </label> <%= @attraction.min_height %><br><br>
+
+
+<% if @user.admin %>
+  <%= link_to "Edit Attraction", edit_attraction_path(@attraction) %><br>
+  <%= link_to "Delete Attraction", edit_attraction_path(@attraction), method:"delete" %><br>
+<% else %>
+  <%= form_for @ride do |f|%>
+    <%= f.hidden_field :user_id, value: @user.id %>
+    <%= f.hidden_field :attraction_id, value: @attraction.id %>
+    <%= f.submit "Go on this ride" %><br>
+  <% end %>
+<% end %>
+
+<%= button_to "All Attractions", attractions_path, method:"get" %>
